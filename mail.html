@@ -1,0 +1,20 @@
+
+function sendEmail() {
+
+
+Email.send({
+    SecureToken : "ad6f74d0-bb9b-4cb1-91d4-a5d8cad118a8",
+    To : 'kahenyaa@gmail.com',
+    From : "you@isp.com",
+    Subject : "This is the subject",
+    Body : "And this is the body",
+	Attachments : [
+	{
+		name : "smtpjs.png",
+		path : "https://networkprogramming.files.wordpress.com/2017/11/smtpjs.png"
+	}]
+}).then(
+  message => alert(message)
+);
+
+}

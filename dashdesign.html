@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/inc/css/mdb.css">
+    <link rel="stylesheet" href="/inc/css/bootstrap.css">
+
+    <style>
+        .tall{
+            height: 100px;
+            
+        }
+
+        .details{
+            height: 100vh;
+
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="d-flex">
+        <div class="col-2 bg-info details">
+            <h2 class="text-center">Hedge Insurance</h2>
+            <nav class="nav">
+                Private Vehicles
+                <br>
+                Motor Commercial
+                <br>
+                Cranes
+                <br>
+            </nav>
+            
+        
+        </div>
+        <div class="col-10 bg-dark">
+            <div class="d-lg-flex d-md-inline">
+            <div class="col-lg-3 col-md-6 p-3 bg-transparent">
+               <div class="card tall aqua-gradient">
+                Private Vehicles
+               </div>
+                
+            </div>
+            <div class="col-lg-3 col-md-6 p-3 bg-transparent">
+                <div class="col-12 purple-gradient card tall">
+                    Motor Commercial
+                   </div>
+               
+            </div>
+            <div class="col-lg-3 col-md-6 p-3 bg-transparent">
+                <div class="card tall peach-gradient">
+                    Cranes
+                   </div>
+               
+               
+            </div>
+            <div class="col-lg-3 p-3 col-md-6 bg-transparent">
+                <div class="card tall warm-flame-gradient">
+                    PSV
+                   </div>
+                 
+            </div>
+            </div>
+            <hr class="bg-light">
+            <h2 class="text-white">Private Vehicles</h2>
+
+            <div class="d-lg-flex d-md-block">
+                <div class="col-lg-6  col-md-12 bg-transparent">
+                <h4 class="text-white">Third Party</h4>
+                <br>
+               <table id="myTable" class="table table-sm  table-hover table-borderless table-responsive " >
+                    <thead class="bg-warning">
+                        <tr class="header">
+                            <th>Reg Number</th>
+                            <th>Phone Number</th>
+                            <th>Vehicle Value</th>
+                            <th>Company</th>
+                            <th>Status</th>
+                            <th>Created at</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>             
+                <tbody class="text-white text-sm-left">
+                    <tr>
+                        <td>["reg_number"]</td>
+                        <td>["phone_number"]</td>
+                        <td>["vehicle_value"]</td>
+                        <td>["company"]</td>
+                        <td>["current_status"]</td>
+                        <td>["created_at"]</td>
+                        <td><a class="btn btn-sm deep-blue-gradient" href="editCover.php?id=<?php echo $private['id']; ?>">Edit</a></td>
+                    </tr><tr>
+                        <td>["reg_number"]</td>
+                        <td>["phone_number"]</td>
+                        <td>["vehicle_value"]</td>
+                        <td>["company"]</td>
+                        <td>["current_status"]</td>
+                        <td>["created_at"]</td>
+                        <td><a class="btn btn-sm deep-blue-gradient" href="editCover.php?id=<?php echo $private['id']; ?>">Edit</a></td>
+                    </tr><tr>
+                        <td>["reg_number"]</td>
+                        <td>["phone_number"]</td>
+                        <td>["vehicle_value"]</td>
+                        <td>["company"]</td>
+                        <td>["current_status"]</td>
+                        <td>["created_at"]</td>
+                        <td><a class="btn btn-sm deep-blue-gradient" href="editCover.php?id=<?php echo $private['id']; ?>">Edit</a></td>
+                    </tr><tr>
+                        <td>["reg_number"]</td>
+                        <td>["phone_number"]</td>
+                        <td>["vehicle_value"]</td>
+                        <td>["company"]</td>
+                        <td>["current_status"]</td>
+                        <td>["created_at"]</td>
+                        <td><a class="btn btn-sm deep-blue-gradient" href="editCover.php?id=<?php echo $private['id']; ?>">Edit</a></td>
+                    </tr><tr>
+                        <td>["reg_number"]</td>
+                        <td>["phone_number"]</td>
+                        <td>["vehicle_value"]</td>
+                        <td>["company"]</td>
+                        <td>["current_status"]</td>
+                        <td>["created_at"]</td>
+                        <td><a class="btn btn-sm deep-blue-gradient" href="editCover.php?id=<?php echo $private['id']; ?>">Edit</a></td>
+                    </tr><tr>
+                        <td>["reg_number"]</td>
+                        <td>["phone_number"]</td>
+                        <td>["vehicle_value"]</td>
+                        <td>["company"]</td>
+                        <td>["current_status"]</td>
+                        <td>["created_at"]</td>
+                        <td><a class="btn btn-sm deep-blue-gradient" href="editCover.php?id=<?php echo $private['id']; ?>">Edit</a></td>
+                    </tr><tr>
+                        <td>["reg_number"]</td>
+                        <td>["phone_number"]</td>
+                        <td>["vehicle_value"]</td>
+                        <td>["company"]</td>
+                        <td>["current_status"]</td>
+                        <td>["created_at"]</td>
+                        <td><a class="btn btn-sm deep-blue-gradient" href="editCover.php?id=<?php echo $private['id']; ?>">Edit</a></td>
+                    </tr><tr>
+                        <td>["reg_number"]</td>
+                        <td>["phone_number"]</td>
+                        <td>["vehicle_value"]</td>
+                        <td>["company"]</td>
+                        <td>["current_status"]</td>
+                        <td>["created_at"]</td>
+                        <td><a class="btn btn-sm deep-blue-gradient" href="editCover.php?id=<?php echo $private['id']; ?>">Edit</a></td>
+                    </tr><tr>
+                        <td>["reg_number"]</td>
+                        <td>["phone_number"]</td>
+                        <td>["vehicle_value"]</td>
+                        <td>["company"]</td>
+                        <td>["current_status"]</td>
+                        <td>["created_at"]</td>
+                        <td><a class="btn btn-sm deep-blue-gradient" href="editCover.php?id=<?php echo $private['id']; ?>">Edit</a></td>
+                    </tr>
+                </tbody>
+                </table>
+            </div>
+            <hr class="d-lg-none bg-white">
+            <div class="col-lg-6 col-md-12 bg-transparent">
+                <h4 class="text-white">Comprehensive Covers</h4>
+                <br>
+                <table id="myTable" class="table table-sm  table-hover table-borderless table-responsive " >
+                    <thead class="bg-warning">
+                        <tr class="header">
+                            <th>Reg Number</th>
+                            <th>Phone Number</th>
+                            <th>Vehicle Value</th>
+                            <th>Company</th>
+                            <th>Status</th>
+                            <th>Created at</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                <?php foreach ( $privates as $private) :?>
+                
+                <tbody class="text-white">
+                    <tr>
+                        <td>["reg_number"]</td>
+                        <td>["phone_number"]</td>
+                        <td>["vehicle_value"]</td>
+                        <td>["company"]</td>
+                        <td>["current_status"]</td>
+                        <td>["created_at"]</td>
+                        <td><a class="btn btn-sm deep-blue-gradient" href="editCover.php?id=<?php echo $private['id']; ?>">Edit</a></td>
+                    </tr><tr>
+                        <td>["reg_number"]</td>
+                        <td>["phone_number"]</td>
+                        <td>["vehicle_value"]</td>
+                        <td>["company"]</td>
+                        <td>["current_status"]</td>
+                        <td>["created_at"]</td>
+                        <td><a class="btn btn-sm deep-blue-gradient" href="editCover.php?id=<?php echo $private['id']; ?>">Edit</a></td>
+                    </tr><tr>
+                        <td>["reg_number"]</td>
+                        <td>["phone_number"]</td>
+                        <td>["vehicle_value"]</td>
+                        <td>["company"]</td>
+                        <td>["current_status"]</td>
+                        <td>["created_at"]</td>
+                        <td><a class="btn btn-sm deep-blue-gradient" href="editCover.php?id=<?php echo $private['id']; ?>">Edit</a></td>
+                    </tr><tr>
+                        <td>["reg_number"]</td>
+                        <td>["phone_number"]</td>
+                        <td>["vehicle_value"]</td>
+                        <td>["company"]</td>
+                        <td>["current_status"]</td>
+                        <td>["created_at"]</td>
+                        <td><a class="btn btn-sm deep-blue-gradient" href="editCover.php?id=<?php echo $private['id']; ?>">Edit</a></td>
+                    </tr><tr>
+                        <td>["reg_number"]</td>
+                        <td>["phone_number"]</td>
+                        <td>["vehicle_value"]</td>
+                        <td>["company"]</td>
+                        <td>["current_status"]</td>
+                        <td>["created_at"]</td>
+                        <td><a class="btn btn-sm deep-blue-gradient" href="editCover.php?id=<?php echo $private['id']; ?>">Edit</a></td>
+                    </tr><tr>
+                        <td>["reg_number"]</td>
+                        <td>["phone_number"]</td>
+                        <td>["vehicle_value"]</td>
+                        <td>["company"]</td>
+                        <td>["current_status"]</td>
+                        <td>["created_at"]</td>
+                        <td><a class="btn btn-sm deep-blue-gradient" href="editCover.php?id=<?php echo $private['id']; ?>">Edit</a></td>
+                    </tr><tr>
+                        <td>["reg_number"]</td>
+                        <td>["phone_number"]</td>
+                        <td>["vehicle_value"]</td>
+                        <td>["company"]</td>
+                        <td>["current_status"]</td>
+                        <td>["created_at"]</td>
+                        <td><a class="btn btn-sm deep-blue-gradient" href="editCover.php?id=<?php echo $private['id']; ?>">Edit</a></td>
+                    </tr><tr>
+                        <td>["reg_number"]</td>
+                        <td>["phone_number"]</td>
+                        <td>["vehicle_value"]</td>
+                        <td>["company"]</td>
+                        <td>["current_status"]</td>
+                        <td>["created_at"]</td>
+                        <td><a class="btn btn-sm deep-blue-gradient" href="editCover.php?id=<?php echo $private['id']; ?>">Edit</a></td>
+                    </tr><tr>
+                        <td>["reg_number"]</td>
+                        <td>["phone_number"]</td>
+                        <td>["vehicle_value"]</td>
+                        <td>["company"]</td>
+                        <td>["current_status"]</td>
+                        <td>["created_at"]</td>
+                        <td><a class="btn btn-sm deep-blue-gradient" href="editCover.php?id=<?php echo $private['id']; ?>">Edit</a></td>
+                    </tr>
+
+
+
+                </tbody>
+                </table>
+            </div>
+         </div>
+            
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template</title>
+    <link rel="stylesheet" href="inc/css/bootstrap.css">
+    <script src="inc/js/jquery.js"></script>
+</head>
+<style>
+.insurance-name{
+    height: 100vh;
+}
+.insurance-pay{
+    height: 100vh;
+    border-width: 1px;
+    border-left: 1px;
+    border-top-style: none;
+    border-left-style: solid;
+    border-right-style: none;
+    border-bottom-style: none;
+}
+
+.insuranceType{
+    position: absolute;
+    bottom: 60px;
+    font-weight: bolder;
+    font-size: 2em;
+    
+}
+
+.buyer-details{
+    display: none;
+}
+
+.selected-company-trident{
+    display: none;
+}
+
+.selected-company-pacis{
+    display: none;
+}
+
+.process-complete{
+    font-size: 1.5rem;
+    display: none;
+    font-weight: 600;
+}
+
+.submitPacis{
+    display: none;
+}
+
+.submitTrident{
+    display: none;
+}
+
+
+</style>
+<body>
+   <!--<div class="container-fluid d-sm-block d-lg-flex bg-warning">-->
+   <form method="POST" action="">
+    <div class="insurance-name container-fluid col-lg-4 col-sm-12 bg-warning d-inline-block float-left">
+        <div class="insuranceType text-dark pl-5" >PSV Chauffeur driven<br>
+        Comprehensive Cover</div>
+    </div>
+
+
+    <div class="insurance-details container-fluid col-lg-4 col-sm-12 bg-white float-left">
+        <!-- Car Details-->
+        <div class="container w-75 car-details">
+            <br><br>
+    
+            <label for="">Vehicle Value</label><br>
+            <input type="number" min="500000" id="carValue" name="carValue" class="form-control" required>
+            
+            <br>
+            <label for="">Year Of Manufacture</label><br>
+            <input type="number" min="2008" max="2020" id="yom" name="yom"class="form-control">
+    
+         <br>
+            <div class="form-group">
+                <label for="my-select">Tonage</label>
+               <input type="number" id="tons" name="tons" class="form-control" min="0" max="30">
+            </div>
+            <br>
+           
+    
+        <div class="text-center">
+            <br>
+            <button class="btn btn-warning " id="calculate" onclick="myFunction()">Calculate</button> 
+        </div>
+            <br>
+           
+    
+    
+            </div>
+         
+    <!--BUYER DETAILS-->
+    <div class="container w-75 buyer-details">
+        <br>
+        <br>
+        <label>First Name</label><br>
+       <input type="text" class="form-control" name="firstName" id="firstName" autocomplete="given-name" placeholder=" First Name">
+       
+       <br>
+       <label>Last Name</label><br>
+       <input type="text" class="form-control" name="lastName" autocomplete="cc-family-name"  id="lastName" placeholder="Last Name">
+       <br>
+       <label>Phone Number</label><br>
+       <input type="tel"  class="form-control" id="phone" name="phone" autocomplete="mobile" placeholder="0700419377" required>
+       <br>
+       
+       <label>Email</label><br>
+       <input type="email"  class="form-control" id="email" name="email" autocomplete="email" placeholder="user@domain.com" required>
+       <br>
+       <label>ID Number</label><br>
+       <input type="number" class="form-control" id="idNumber" name="idNumber"    placeholder="ID Card">
+       <br>
+       <label>Chasis Number </label><br>
+       <input type="text" class="form-control" id="chasisNumber"  name="chasisNumber"  placeholder="Chasis Number">
+       <br>
+       <label>KRA PIN</label><br>
+       <input type="text" class="form-control" id="kraPin"  name="kraPin"  placeholder="KRA PIN"><br>
+       
+       <div class="text-center">
+           
+        <button class="btn btn-success submitTrident" type="submit" id="submitTrident" value="submit" name="submitTrident">Submit</button>
+        <button class="btn btn-warning submitPacis" type="submit" name="submitPacis" id="submitPacis" value="submit">Submit</button> 
+        <button class="btn btn-primary" id="back" type="button" >Back</button>
+       </div>
+        <div class="mb-5"></div>   
+     </div>
+
+     <br>
+     <br>
+     <br>
+
+     <div class="text-center process-complete">
+        <br>
+        <br>
+        <br>
+
+        
+    </div>
+
+    </div>
+
+
+    <div class="insurance-pay col-lg-4 col-sm-12 bg-white float-right">
+<br>
+<br>
+        <br>
+        <!-- INSURANCE COMPANIES-->
+        <div class="companies text-center">        
+            <div class="col-8 btn btn-light">
+                    Pacis Insurance<br>
+                    Ksh <span id="pacis">25,000
+                </span>
+              
+                <br>
+                <button class="btn  btn-sm btn-outline-dark" id="pacisbuy" value="" >BUY</button>
+            </div>
+
+        <br>
+      <br>
+        <br>
+            <div class="col-8 btn btn-light ">
+                Trident Insurance<br>
+                Ksh <span id="trident" name="trident">20,000
+            </span>
+            <br>
+            <button class="btn  btn-sm btn-outline-dark" id="tridentbuy">BUY</button>
+        </div>
+
+        </div>
+
+        <!-- SELECTED COMPANY -->
+        <div class="selected-company-pacis text-center">
+            <br>
+            image
+    <br>
+            <h3>Pacis Insurance</h3>
+            <br>
+            <h4>Ksh <span id="pacis1">25,000</h4>
+            <input type="hidden" id="amount" name="amount" value=""/>
+            <br>
+            <h4>Till Number: 516 2739</h4>
+        </div>
+
+        <div class="selected-company-trident text-center">
+            <br>
+            image
+    <br>
+            <h3>Trident Insurance</h3>
+            <br>
+            <h4>Ksh <span id="trident1" name="trident1">20,000
+            </span></h4>
+           
+            <br>
+            <h4>Till Number: 516 2739</h4>
+        </div>
+
+
+    </div>
+
+
+
+       <script>
+
+
+    function myFunction(){ 
+    var yom = parseInt(document.getElementById("yom").value);
+    var ton = parseInt( document.getElementById("tons").value );
+    var pacisTotalInsurable;
+    
+ 
+    if (ton < 4) {
+        pacisTotalInsurable = 6500;
+    } else if (ton < 8) {
+        pacisTotalInsurable = 7500;
+    } else if (ton < 11) {
+        pacisTotalInsurable = 10000;
+    } else if (ton < 16) {
+        pacisTotalInsurable = 12500;
+    } else {
+        pacisTotalInsurable = 15000;
+    }
+
+
+    
+
+    
+    document.getElementById("pacis").innerHTML = pacisTotalInsurable.toFixed(0) ;
+    document.getElementById("pacis1").innerHTML = pacisTotalInsurable.toFixed(0) ;
+            
+    
+    if (ton < 8) {
+        tridentTotalInsurable = 12500;
+    } else if (ton < 20) {
+        tridentTotalInsurable = 20000;
+    } else if (ton <= 30) {
+        tridentTotalInsurable = 50000;
+    }
+
+document.getElementById("trident").innerHTML = tridentTotalInsurable.toFixed(0) ;
+document.getElementById("trident1").innerHTML = tridentTotalInsurable.toFixed(0) ;
+document.getElementById("trident2").innerHTML = tridentTotalInsurable.toFixed(0) ;
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+$(document).ready(function() {
+
+
+$( '#pacisbuy' ).click(function () {
+$('.car-details').hide();
+$('.companies').hide();
+$('.submitTrident').hide();
+$('.buyer-details').show();
+$('.submitPacis').show();
+$('.selected-company-pacis').show();
+
+});
+
+$( '#tridentbuy' ).click(function () {
+$('.car-details').hide();
+$('.submitPacis').hide();
+$('.companies').hide();
+$('.submitTrident').show();
+$('.buyer-details').show();
+$('.selected-company-trident').show();
+});
+
+
+$( '#submitPacis' ).click(function () {
+$('.car-details').hide();
+$('.buyer-details').hide();
+$('.selected-company').show();
+$('.companies').hide();
+$('.process-complete').show();
+});
+
+$( '#submitTrident' ).click(function () {
+$('.car-details').hide();
+$('.buyer-details').hide();
+$('.selected-company').show();
+$('.companies').hide();
+$('.process-complete').show();
+});
+
+$( '#back' ).click(function () {
+$('.car-details').show();
+$('.buyer-details').hide();
+$('.selected-company-pacis').hide();
+$('.selected-company-trident').hide();
+$('.companies').show();  
+});
+
+$( '#comp' ).click(function () {
+$('.thirdParty').hide();
+$('.thirdPartyCar').hide()
+$('.carDetails').show();
+$('.riders').show();  
+});
+
+});
+
+
+</script>
+</form>
+</body>
+</html>

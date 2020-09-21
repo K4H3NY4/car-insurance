@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taxis </title>
+    <link rel="stylesheet" href="bootstrap.css">
+   
+    <link rel="stylesheet" href="jquery.js">
+</head>
+<body>
+
+    <div class="container w-75">
+        <br><br>
+        <h3 class="text-center">Taxi</h3>
+        <br>
+
+        <label for="">Vehicle Value</label><br>
+        <input type="number" id="carValue" min="500000" class="form-control">
+        
+        <br>
+        <label for="">Year Of Manufacture</label><br>
+        <input type="number" id="yom" min="2005" max="2020" class="form-control">
+
+     <br>
+        <div class="form-group">
+            <label for="my-select">Number of Passengers</label>
+            <select id="numberOfPassengers" class="custom-select" name="">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
+        </div>
+        <br>
+        <br>
+
+        <button class="btn btn-warning" id="calculate" onclick="myFunction()">Calculate</button> 
+
+        
+        <br>
+        <div class="col-12 m-2 btn btn-light">
+            Trident Insurance<br>
+            Ksh <span id="output">7500
+        </span>
+        <br>
+        <button class="btn  btn-sm btn-outline-dark" id="">BUY</button>
+    </div>
+
+
+        </div>
+     
+
+    </div>
+
+    
+
+
+<script>
+function myFunction(){
+    var carValue = parseFloat(document.getElementById("carValue").value);
+    var yom = parseFloat( document.getElementById("yom").value );
+    var numberOfPassengers = parseFloat( document.getElementById("numberOfPassengers").value );
+
+
+    var totalPremium = 7500 + (numberOfPassengers * 500);
+    document.getElementById("output").innerHTML = totalPremium.toFixed(0) ;
+    console.log(totalPremium);
+
+
+
+
+}
+</script>
+</body>
+</html>

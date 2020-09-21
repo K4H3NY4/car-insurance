@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Vehicle</title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <script src="jquery.js"></script>
+</head>
+<style>
+.insurance-name{
+    height: 100vh;
+}
+.insurance-pay{
+    height: 100vh;
+    border-width: 1px;
+    border-left: 1px;
+    border-top-style: none;
+    border-left-style: solid;
+    border-right-style: none;
+    border-bottom-style: none;
+}
+
+.insuranceType{
+    position: absolute;
+    bottom: 60px;
+    font-weight: bolder;
+    font-size: 2em;
+    
+}
+
+.buyer-details{
+    display: none;
+}
+
+.selected-company-general{
+    display: none;
+}
+
+.selected-company-trident{
+    display: none;
+}
+
+.selected-company-pacis{
+    display: none;
+}
+
+.selected-company-salaam{
+    display: none;
+}
+
+.process-complete{
+    font-size: 1.5rem;
+    display: none;
+    font-weight: 600;
+}
+
+.submitPacis{
+    display: none;
+}
+
+.submitTrident{
+    display: none;
+}
+
+
+</style>
+<body>
+   <!--<div class="container-fluid d-sm-block d-lg-flex bg-warning">-->
+
+    <div class="insurance-name container-fluid col-lg-4 col-sm-12 bg-warning d-inline-block float-left">
+        <div class="insuranceType text-dark pl-5" >General Cartage<br>
+        Comprehensive Cover</div>
+    </div>
+
+<form  method="POST" action="<?php $_SERVER['PHP_SELF']; ?>">
+    <div class="insurance-details container-fluid col-lg-4 col-sm-12 bg-white float-left">
+        <!-- Car Details-->
+        <div class="container w-75 car-details">
+            <br><br>
+    
+            <label for="">Vehicle Value</label><br>
+            <input type="number" min="500000" id="carValue" name="carValue" class="form-control" required>
+            
+            <br>
+            <label for="">Year Of Manufacture</label><br>
+            <input type="number" min="2008" max="2020" id="yom" name="yom"class="form-control">
+    
+         
+            <br>
+            <p>
+                Riders <span class="font-italic">(Optional)</span> 
+            </p>
+    
+           
+                <div class="form-group">
+                    <label for="excessProtection">Excess Protection</label><br>
+                    <select id="excessProtection" class="custom-select" name="excessProtection">
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                        
+                    </select>
+                </div>
+                
+               <div class="form-group">
+                 <label for="politicalViolence">Political Violence</label><br>
+                    <select id="politicalViolence" class="custom-select" name="politicalViolence">
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                        
+                    </select>
+                
+               </div>
+             
+    
+        <div class="text-center">
+            <br>
+            <button class="btn btn-warning " id="calculate" onclick="myFunction()">Calculate</button> 
+        </div>
+            <br>
+           
+    
+    
+            </div>
+         
+    <!--BUYER DETAILS-->
+    <div class="container w-75 buyer-details">
+        <br>
+        <br>
+        <label>First Name</label><br>
+       <input type="text" class="form-control" name="names" id="names" autocomplete="given-name" placeholder=" First Name">
+       
+       <br>
+       <label>Number Plate</label><br>
+       <input type="text" class="form-control" name="numberPlate"   id="numberPlate" placeholder="numberPlate">
+       <br>
+       <label>Phone Number</label><br>
+       <input type="tel"  class="form-control" id="phone" name="phoneNumber" autocomplete="mobile" placeholder="0700419377" required>
+       <br>
+       
+       <label>Email</label><br>
+       <input type="email"  class="form-control" id="email" name="email" autocomplete="email" placeholder="user@domain.com" required>
+       <br>
+       <label>ID Number</label><br>
+       <input type="number" class="form-control" id="idNumber" name="idNumber"    placeholder="ID Card">
+       <br>
+       <label>Chasis Number </label><br>
+       <input type="text" class="form-control" id="chasisNumber"  name="chasisNumber"  placeholder="Chasis Number">
+       <br>
+       <label>KRA PIN</label><br>
+       <input type="text" class="form-control" id="kraPin"  name="kraPin"  placeholder="KRA PIN"><br>
+       
+       <div class="text-center">
+           
+        <button class="btn btn-warning submitTrident" type="submit" id="submitTrident" value="submit" name="submitTrident">Submit</button>
+        <button class="btn btn-warning submitPacis" type="submit" name="submitPacis" id="submitPacis" value="submit">Submit</button> 
+        <button class="btn btn-warning submitSalaam" type="submit" name="submitSalaam" id="submitSalaam" value="submit">Submit</button> 
+        <button class="btn btn-warning submitGeneral" type="submit" name="submitGeneral" id="submitGeneral" value="submit">Submit</button>
+        <button class="btn btn-primary" id="back" type="button" >Back</button>
+       </div>
+        <div class="mb-5"></div>   
+     </div>
+
+     <br>
+     <br>
+     <br>
+
+     <div class="text-center process-complete">
+        <br>
+        <br>
+        <br>
+
+        
+    </div>
+
+    </div>
+
+
+    <div class="insurance-pay col-lg-4 col-sm-12 bg-white float-right">
+
+<br>
+        <br>
+        <!-- INSURANCE COMPANIES-->
+        <div class="companies text-center ">        
+            <div class="col-12 bg-white">
+                <img height="50px" width="100px" src="img/retina-insurance.png" alt="">
+                    <br>Pacis Insurance<br>
+                    Ksh <span id="pacis">20,000 
+                </span>
+                <br>
+                <button class="btn  btn-sm btn-outline-dark" id="pacisbuy" value="" >BUY</button>
+            </div>
+
+        <br>
+        <br>
+            <div class="col-12 bg-white ">
+                <img height="50px" width="100px" src="img/cropped-logo-long-140x47.png" alt=""><br>
+                Trident Insurance<br>
+                Ksh <span id="trident" name="trident">20,000
+            </span>
+            <br>
+            <button class="btn  btn-sm btn-outline-dark" id="tridentbuy">BUY</button>
+        </div>
+<br>
+        <br>
+            <div class="col-12 bg-white ">
+                <img height="50px" width="100px" src="img/sanlam-logo.png" alt=""><br>
+                Salaam Insurance<br>
+                Ksh <span id="salaam" name="salaam">25,000
+            </span>
+            <br>
+            <button class="btn  btn-sm btn-outline-dark" id="salaambuy">BUY</button>
+        </div>
+<br>
+        <br>
+          
+<div><br></div>
+        </div>
+
+        <!-- SELECTED COMPANY -->
+        <div class="selected-company-pacis text-center">
+            <br>
+            <img height="100px" width="200px" src="img/retina-insurance.png" alt="">
+    <br>
+            <h3>Pacis Insurance</h3>
+            <br>
+            <table class="table table-borderless table-striped col-8">
+                <tr>
+                    <td>Premium:</td>
+                    <td>Ksh <span id="pacisPremium"></td>
+                </tr>
+                <tr>
+                    <td>Excess Protection:</td>
+                    <td>Ksh <span id="pacisExcess"></td>
+                </tr>
+
+                <tr class="success">
+                    <td>Political Violence:</td>
+                    <td>Ksh <span id="pacisPolitical"></td>
+                </tr>
+              
+                <tr class="success">
+                    <td class="font-weight-bold">Total</td>
+                    <td class="font-weight-bold">Ksh <span id="pacis1"></td>
+                </tr>
+
+            </table>
+            
+            
+            
+               
+            <input type="hidden" id="amount" name="amount" value=""/>
+            <br>
+            <h4>Till Number: 516 2739</h4>
+
+            <br>
+
+           
+            
+        </div>
+
+        <div class="selected-company-trident text-center">
+            <br>
+            <img height="60px" width="200px" src="img/cropped-logo-long-140x47.png" alt="">
+    <br>
+            <h3>Trident Insurance</h3>
+            <br>
+            <table class="table table-borderless table-striped col-8">
+                <tr>
+                    <td>Premium:</td>
+                    <td>Ksh <span id="tridentPremium"></td>
+                </tr>
+                <tr>
+                    <td>Excess Protection:</td>
+                    <td>Ksh <span id="tridentExcess"></td>
+                </tr>
+
+                <tr class="success">
+                    <td>Political Violence:</td>
+                    <td>Ksh <span id="tridentPolitical"></td>
+                </tr>
+               
+
+                <tr class="success">
+                    <td class="font-weight-bold">Total</td>
+                    <td class="font-weight-bold">Ksh <span id="trident1"></td>
+                </tr>
+
+            </table>
+            
+            
+           
+            <br>
+            <h4>Till Number: 516 2739</h4>
+        </div>
+
+
+        <div class="selected-company-salaam text-center">
+            <br>
+            <img height="60px" width="200px" src="img/sanlam-logo.png" alt="">
+    <br>
+            <h3>Sanlam Insurance</h3>
+            <br>
+            <table class="table table-borderless table-striped col-8">
+                <tr>
+                    <td>Premium:</td>
+                    <td>Ksh <span id="salaamPremium"></td>
+                </tr>
+                <tr>
+                    <td>Excess Protection:</td>
+                    <td>Ksh <span id="salaamExcess"></td>
+                </tr>
+
+                <tr class="success">
+                    <td>Political Violence:</td>
+                    <td>Ksh <span id="salaamPolitical"></td>
+                </tr>
+                
+
+                <tr class="success">
+                    <td class="font-weight-bold">Total</td>
+                    <td class="font-weight-bold">Ksh <span id="salaam1"></td>
+                </tr>
+
+            </table>
+            
+            
+           
+            <br>
+            <h4>Till Number: 516 2739</h4>
+        </div>
+
+        <div class="selected-company-general text-center">
+            <br>
+            <img height="60px" width="200px" src="img/ga-logo-new.png" alt="">
+    <br>
+            <h3>General Accident Insurance</h3>
+            <br>
+            <table class="table table-borderless table-striped col-8">
+                <tr>
+                    <td>Premium:</td>
+                    <td>Ksh <span id="generalPremium"></td>
+                </tr>
+                <tr>
+                    <td>Excess Protection:</td>
+                    <td>Free</td>
+                </tr>
+
+                <tr class="success">
+                    <td>Political Violence:</td>
+                    <td>Free</td>
+                </tr>
+                
+
+                <tr class="success">
+                    <td class="font-weight-bold">Total</td>
+                    <td class="font-weight-bold">Ksh <span id="general1"></td>
+                </tr>
+
+            </table>
+            
+            
+           
+            <br>
+            <h4>Till Number: 516 2739</h4>
+        </div>
+
+    </div>
+    </div>
+</form>
+</div>
+
+
+
+<script>
+
+
+    function myFunction(){
+    var carValue = parseInt(document.getElementById("carValue").value);
+    var yom = parseInt( document.getElementById("yom").value );
+    
+    var excessProtection = parseInt( document.getElementById("excessProtection").value );
+    var politicalViolence = parseInt( document.getElementById("politicalViolence").value );
+    //var lossOfUse = parseInt( document.getElementById("lossOfUse").value );
+    
+    
+    
+    
+  
+
+
+
+
+    /* ===========================================
+                    PACIS INSURANCE 
+    ==============================================*/
+                    /* value of car */
+
+
+                    if ( carValue >= 500000){
+        var pacisCoverPay = carValue * 0.055;
+        if (pacisCoverPay < 30000){
+            pacisCoverPay = 30000;
+        }
+        console.log(pacisCoverPay);
+    }   
+                  /*riders*/
+                 /*political violence*/
+   if ( politicalViolence > 0){
+       pacisPoliticalViolenceRider = pacisCoverPay * 0.0035;
+       if (pacisPoliticalViolenceRider < 5000){
+            pacisPoliticalViolenceRider = 5000;
+            console.log(pacisPoliticalViolenceRider);
+        } else{
+           pacisPoliticalViolenceRider = pacisCoverPay * 0.0035;
+       }
+       
+        console.log(pacisPoliticalViolenceRider);
+
+
+    } else if (politicalViolence < 1){
+       pacisPoliticalViolenceRider = 0;
+       console.log(pacisPoliticalViolenceRider);
+          
+
+    }
+                /* excess protector*/
+    if ( excessProtection > 0){
+        var pacisExcessProtectionRider = pacisCoverPay * 0.005;
+        if (pacisExcessProtectionRider < 5000){
+            pacisExcessProtectionRider = 5000;
+        }
+
+        console.log(pacisExcessProtectionRider);
+    }   else if (excessProtection < 1){
+        var pacisExcessProtectionRider = 0;
+        console.log(pacisExcessProtectionRider) ;
+        console.log('pacisExcessProtectionRider'); 
+    }
+                     /* Pacis Total Pay */
+    
+     pacisTotalInsurable = pacisCoverPay + pacisPoliticalViolenceRider + pacisExcessProtectionRider;
+
+    
+
+    document.getElementById("pacis").innerHTML = pacisTotalInsurable.toFixed(0) ;
+    document.getElementById("pacis1").innerHTML = pacisTotalInsurable.toFixed(0) ;
+    document.getElementById("pacisPolitical").innerHTML = pacisPoliticalViolenceRider.toFixed(0);
+    document.getElementById("pacisExcess").innerHTML =  pacisExcessProtectionRider.toFixed(0);
+   // document.getElementById("pacisLoss").innerHTML =  pacisLossOfUseRider.toFixed(0);
+    document.getElementById("pacisPremium").innerHTML =  pacisCoverPay.toFixed(0);
+
+
+
+     /*=============================================
+                TRIDENT INSURANCE
+     =============================================== */
+                /* value of car */
+
+   if ( carValue >= 500000){
+    var tridentCoverPay = carValue * 0.04;
+    if (tridentCoverPay < 20000){
+        tridentCoverPay = 20000;
+    }
+    console.log(tridentCoverPay);
+}   
+
+  
+            /*riders*/
+            /* excess protector*/
+if ( excessProtection > 0){
+    var tridentExcessProtectionRider = tridentCoverPay * 0.005;
+    if (tridentExcessProtectionRider < 3000){
+        tridentExcessProtectionRider = 3000;
+        console.log(tridentExcessProtectionRider);
+    }
+  
+}   else if (excessProtection < 1){
+    var tridentExcessProtectionRider = 0;
+    console.log(tridentExcessProtectionRider)  
+}
+
+            /*political violence*/
+if ( politicalViolence > 0){
+    var tridentPoliticalViolenceRider = tridentCoverPay * 0.003;
+    if (tridentPoliticalViolenceRider < 2500){
+        tridentPoliticalViolenceRider= 2500;
+    }
+
+}   else if (politicalViolence < 1){
+    var tridentPoliticalViolenceRider = 0;
+    console.log(tridentPoliticalViolenceRider)  
+}
+
+        /* Pacis Total Pay */
+
+var tridentTotalInsurable =  tridentExcessProtectionRider + tridentPoliticalViolenceRider + tridentCoverPay;
+
+document.getElementById("trident").innerHTML = tridentTotalInsurable.toFixed(0) ;
+document.getElementById("trident1").innerHTML = tridentTotalInsurable.toFixed(0) ;
+document.getElementById("tridentPolitical").innerHTML = tridentPoliticalViolenceRider.toFixed(0);
+document.getElementById("tridentExcess").innerHTML =  tridentExcessProtectionRider.toFixed(0);
+//document.getElementById("tridentLoss").innerHTML =  tridentLossOfUseRider.toFixed(0);
+document.getElementById("tridentPremium").innerHTML =  tridentCoverPay.toFixed(0);
+
+
+
+
+ /* ===========================================
+                    SANLAM INSURANCE 
+    ==============================================*/
+                    /* value of car */
+
+
+                    if ( carValue >= 500000){
+        var sanlamCoverPay = carValue * 0.0475;
+        if (sanlamCoverPay < 30000){
+            sanlamCoverPay = 30000;
+        }
+        console.log(sanlamCoverPay);
+    }   
+                  /*riders*/
+                 /*political violence*/
+   if ( politicalViolence > 0){
+       sanlamPoliticalViolenceRider = sanlamCoverPay * 0.0035;
+       if (sanlamPoliticalViolenceRider < 5000){
+            sanlamPoliticalViolenceRider = 5000;
+            console.log(sanlamPoliticalViolenceRider);
+        } else{
+           sanlamPoliticalViolenceRider = sanlamCoverPay * 0.0035;
+       }
+       
+        console.log(sanlamPoliticalViolenceRider);
+
+
+    } else if (politicalViolence < 1){
+       sanlamPoliticalViolenceRider = 0;
+       console.log(sanlamPoliticalViolenceRider);
+          
+
+    }
+                /* excess protector*/
+    if ( excessProtection > 0){
+        var sanlamExcessProtectionRider = sanlamCoverPay * 0.005;
+        if (sanlamExcessProtectionRider < 5000){
+            sanlamExcessProtectionRider = 5000;
+        }
+
+        console.log(sanlamExcessProtectionRider);
+    }   else if (excessProtection < 1){
+        var sanlamExcessProtectionRider = 0;
+        console.log(sanlamExcessProtectionRider) ;
+        console.log('sanlamExcessProtectionRider'); 
+    }
+                     /* Pacis Total Pay */
+    
+sanlamTotalInsurable = sanlamCoverPay + sanlamPoliticalViolenceRider + sanlamExcessProtectionRider;
+
+document.getElementById("salaam").innerHTML = sanlamTotalInsurable.toFixed(0) ;
+document.getElementById("salaam1").innerHTML = sanlamTotalInsurable.toFixed(0) ;
+document.getElementById("salaamPolitical").innerHTML = sanlamPoliticalViolenceRider.toFixed(0);
+document.getElementById("salaamExcess").innerHTML =  sanlamExcessProtectionRider.toFixed(0);
+
+document.getElementById("salaamPremium").innerHTML =  sanlamCoverPay.toFixed(0);
+
+
+
+
+
+
+
+}
+
+
+
+
+
+$(document).ready(function() {
+
+
+$( '#pacisbuy' ).click(function () {
+$('.car-details').hide();
+$('.companies').hide();
+$('.submitTrident').hide();
+$('.submitSalaam').hide();
+$('.submitGeneral').hide();
+$('.buyer-details').show();
+$('.submitPacis').show();
+$('.selected-company-pacis').show();
+});
+
+$( '#tridentbuy' ).click(function () {
+$('.car-details').hide();
+$('.submitPacis').hide();
+$('.submitSalaam').hide();
+$('.submitGeneral').hide();
+$('.companies').hide();
+$('.submitTrident').show();
+$('.buyer-details').show();
+$('.selected-company-trident').show();
+});
+
+$( '#salaambuy' ).click(function () {
+$('.car-details').hide();
+$('.companies').hide();
+$('.submitPacis').hide();
+$('.submitTrident').hide();
+$('.submitGeneral').hide();
+$('.buyer-details').show();
+$('.submitSalaam').show();
+$('.selected-company-salaam').show();
+});
+
+
+$( '#generalbuy' ).click(function () {
+$('.car-details').hide();
+$('.companies').hide();
+$('.submitPacis').hide();
+$('.submitTrident').hide();
+$('.submitGeneral').hide();
+$('.buyer-details').show();
+$('.submitSalaam').hide();
+$('.submitGeneral').show();
+$('.selected-company-general').show();
+});
+
+$( '#submitPacis' ).click(function () {
+$('.car-details').hide();
+$('.buyer-details').hide();
+$('.selected-company').show();
+$('.companies').hide();
+$('.process-complete').show();
+});
+
+$( '#submitTrident' ).click(function () {
+$('.car-details').hide();
+$('.buyer-details').hide();
+$('.selected-company').show();
+$('.companies').hide();
+$('.process-complete').show();
+});
+
+$( '#back' ).click(function () {
+$('.car-details').show();
+$('.buyer-details').hide();
+$('.selected-company-pacis').hide();
+$('.selected-company-trident').hide();
+$('.selected-company-salaam').hide();
+$('.selected-company-general').hide();
+$('.companies').show();  
+});
+
+$( '#comp' ).click(function () {
+$('.thirdParty').hide();
+$('.thirdPartyCar').hide()
+$('.carDetails').show();
+$('.riders').show();  
+});
+
+});
+    
+
+
+</script>
+
+</body>
+</html>

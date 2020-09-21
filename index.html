@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car</title>
+    <link rel="stylesheet" href="bootstrap.css">
+</head>
+<body>
+<div class="container">
+
+    <div class="form-group">
+        <label for="value">Value Of Vehicle</label><br>
+        <input type="number" min="400000" id="value" class="btn btn-outline-dark w-50" placeholder="car Value">
+    
+    
+    </div>
+
+    <div class="form-group">
+        <label for="excessProtection">Year of Manufacture</label><br>
+        <input type="number"  class="btn btn-outline-primary w-50" id="year" maxlength="4" minlength="4">
+    </div>
+    
+
+
+<input type="text" class="btn btn-outline-primary w-50" name="firstName" id="firstName" placeholder=" First Name">
+<br>
+<br>
+<input type="text" class="btn btn-outline-primary w-50" name="lastName"  id="lastName" placeholder="Last Name">
+<br>
+<br>
+<input type="tel"  class="btn btn-outline-primary w-50" id="phone"   placeholder="0700419377"><br><br>
+<input type="file" class="form-control w-50" id="idNumber"    placeholder="ID Number"><br>
+<input type="file" class="form-control w-50" id="logBook"    placeholder="log book"><br>
+<input type="text" class="form-control w-50" id="kraPin"    placeholder="KRA PIN"><br>
+
+
+
+<div class="form-group">
+    <label for="excessProtection">Excess Protection</label><br>
+    <select id="excessProtection" class="custom-select w-50" name="">
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select>
+</div>
+
+<br>
+
+
+    <label for="politicalViolence">Political Violence</label><br>
+    <select id="politicalViolence" class="custom-select w-50" name="">
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select>
+
+
+<br>
+<br>
+
+<div class="form-group">
+    <label for="lossOfUse">Loss Of Use</label><br>
+    <select id="lossOfUse" class="custom-select w-50" name="">
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select>
+</div>
+
+
+
+
+
+    
+    <p id="output">--.-</p>
+
+    <button class="btn-bmi" onclick="myFunction()">Calculate</button>
+
+
+</div>
+
+
+
+
+
+
+
+<script>
+
+/* pacis insurance */
+
+function myFunction(){
+    var carValue = parseFloat(document.getElementById("value").value);
+    var excessProtection = parseFloat( document.getElementById("excessProtection").value );
+    var politicalViolence = parseFloat( document.getElementById("politicalViolence").value );
+    var lossOfUse = parseFloat( document.getElementById("lossOfUse").value )
+    
+ /*   console.log(totalInsurable); */
+
+   
+    /* value of car */
+
+    if ( carValue >= 3000000){
+        var coverPay = carValue * 0.035;
+        if (coverPay < 25000){
+            coverPay = 25000;
+        }
+        console.log(coverPay);
+    }   else if (carValue >= 1000000){
+        var coverPay = carValue * 0.04;
+        if (coverPay < 25000){
+            coverPay = 25000;
+        }
+          console.log(coverPay);  
+
+
+    } else if (carValue >= 500000){
+        var coverPay = carValue * 0.0425;
+        if (coverPay < 25000){
+            coverPay = 25000;
+        }
+          console.log(coverPay); 
+    } else if (carValue < 500000){
+        var coverPay = carValue * 0.05;
+        if (coverPay < 25000){
+            coverPay = 25000;
+        }
+          console.log(coverPay);
+
+    }
+
+   
+   /*riders*/
+
+
+    /*political violence*/
+   if ( politicalViolence > 0){
+        var politicalViolenceRider = coverPay * 0.25;
+        if (politicalViolenceRider < 3000){
+            politicalViolenceRider = 3000;
+            console.log(politicalViolenceRider);
+        }
+        console.log(politicalViolenceRider);
+    }   else if (politicalViolence < 1){
+        var politicalViolenceRider = 0;  
+        console.log(politicalViolenceRider)  
+    }
+
+
+
+    /* excess protector*/
+    if ( excessProtection > 0){
+        var excessProtectionRider = coverPay * 0.25;
+        if (excessProtectionRider < 3000){
+            excessProtectionRider = 3000;
+            console.log(excessProtectionRider);
+        }
+        console.log(excessProtectionRider);
+    }   else if (excessProtection < 1){
+        var excessProtectionRider = 0;  
+        console.log(excessProtectionRider)  
+    }
+
+
+
+
+
+
+
+
+    
+    var totalInsurable =  excessProtectionRider + politicalViolenceRider + coverPay
+
+document.getElementById("output").innerHTML = totalInsurable.toFixed(0) ;
+}
+</script>    
+</body>
+</html>
